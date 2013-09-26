@@ -1,0 +1,39 @@
+int inputPin1 = 0;
+int inputPin2= 1;
+
+int outputPin1 = 3;
+
+int sensor1;
+int sensor2;
+
+int brightness;
+
+void setup()
+{
+pinMode(outputPin1, OUTPUT);
+
+}
+
+void loop(){
+
+sensor1 = analogRead(inputPin1);  
+
+sensor2 = analogRead(inputPin2);
+
+if ((sensor1>=600) && (sensor1<=900) && (sensor2>=600) && (sensor2<=900))
+
+{
+brightness = map(sensor1,0,1023,0,255); 
+brightness = map(sensor2,0,1023,0,255); 
+
+}
+else
+{
+  brightness = 0;
+}
+
+
+analogWrite(outputPin1, brightness); 
+
+Serial.println(sensor1);
+}
